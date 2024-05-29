@@ -1,10 +1,38 @@
-.App {
-  text-align: center;
+.nav-ul li{
+  display: inline-block;
+  padding: 20px;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.footerbox {
+  padding: 20px 0;
+}
+.footerbox ul {
+  padding: 0;
+  list-style: none;
+}
+.footerbox ul li {
+  margin-left: 15px;
+}
+.footerbox ul li a {
+  color: #6c757d;
+  text-decoration: none;
+}
+.footerbox ul li a:hover {
+  text-decoration: underline;
+}
+footer.footerbox {
+  position: absolute;
+  width: 100%;
+  bottom: 0;
+}
+
+.register-div {
+  justify-content: center;
+  display: flex;
+}
+
+.register-form {
+  width: 80%;
 }
 
 @media (prefers-reduced-motion: no-preference) {
