@@ -14,7 +14,7 @@ function App() {
         <NavHeader/>
         <Container fluid>
           <Routes>
-            <Route path="/" element={<h1>Product List</h1>} default></Route>
+            <Route path="/products" element={<h1>Product List</h1>}></Route>
             <Route path="/add" element={<h1>Product Add</h1>}></Route>
             <Route path="/update" element={<h1>Product Update</h1>}></Route>
             <Route path="/logout" element={<h1>Logout</h1>}></Route>
