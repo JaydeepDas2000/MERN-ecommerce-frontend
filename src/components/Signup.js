@@ -11,7 +11,7 @@ const SignUp = () => {
     // middleware
     const navigate = useNavigate();
 
-    const collectData = () => {
+    const collectData = async () => {
         // try {
         //     const response = await fetch('http://localhost:5000/user/register', {
         //         method: 'POST',
@@ -39,7 +39,7 @@ const SignUp = () => {
         // }
 
         console.warn(name, email, password);
-        const result = fetch('http://localhost:5000/user/register', {
+        const result = await fetch('http://localhost:5000/user/register', {
             method : 'post',
             body : JSON.stringify({
                 name,
@@ -50,10 +50,72 @@ const SignUp = () => {
                 'Content-Type' : 'application/json'
             },
         })
-        console.warn(result);
+        // console.warn(result);
+        console.log(result)
+        console.log( await JSON.stringify(result))
+        localStorage.setItem("user", await JSON.stringify(result));
         if(result) {
-            navigate('/products');
+            navigate('/');
         }
+
+        // console.warn(name, email, password);
+    
+        // fetch('http://localhost:5000/user/register', {
+        //     method : 'post',
+        //     body : JSON.stringify({
+        //         name,
+        //         email,
+        //         password
+        //     }),
+        //     headers: {
+        //         'Content-Type' : 'application/json'
+        //     },
+        // })
+        // .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error('Network response was not ok');
+        //     }
+        //     return response.json(); // Parse the JSON data
+        // })
+        // .then(data => {
+        //     // Now `data` contains the response from the server
+        //     console.log(data); // Logging the data received from the server
+        //     // Store data in localStorage
+        //     localStorage.setItem("user", JSON.stringify(data));
+            
+        //     // Assuming navigate() is a function that navigates to a specific page
+        //     navigate('/');
+        // })
+        // .catch(error => {
+        //     console.error('There was a problem with your fetch operation:', error);
+        //     // Handle errors here
+        // });
+
+        // try {
+        //     const response = await fetch('http://localhost:5000/user/register', {
+        //         method: 'post',
+        //         body: JSON.stringify({
+        //             name,
+        //             email,
+        //             password
+        //         }),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //     });
+    
+        //     if (!response.ok) {
+        //         throw new Error('Network response was not ok');
+        //     }
+    
+        //     const data = await response.json();
+        //     console.log(data);
+        //     localStorage.setItem("user", JSON.stringify(data));
+        //     navigate('/');
+        // } catch (error) {
+        //     console.error('There was a problem with your fetch operation:', error);
+        //     // Handle errors here
+        // }
     }
 
     return (
