@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from 'axios';
 // import { useHistory } from 'react-router-dom'; // for older version
 import { Form, Button, Container } from 'react-bootstrap';
@@ -12,7 +12,15 @@ const SignUp = () => {
 
     // middleware
     const navigate = useNavigate();
-    // const history = useHistory();
+    // const history = useHistory(); // for older version
+
+    // after login no need to visit signup again
+    useEffect(() => {
+        const auth = localStorage.getItem('user');
+        if(auth) {
+            navigate('/')
+        }
+    })
 
     const collectData = async (e) => {
 

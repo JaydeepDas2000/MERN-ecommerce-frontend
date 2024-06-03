@@ -1,9 +1,20 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 // import { Navbar, Nav, Container } from 'react-bootstrap'
 
 
 const NavHeader = () => {
+
+    const navigate = useNavigate();
+
+    const auth = localStorage.getItem('user');
+
+    const logout = () => {
+        localStorage.clear(); // it help to clean whole keys in local storage
+        // for single key we have to use localStorage.removeItem('key');
+        navigate('/signup')
+    }
+    
     return (
         // <Navbar bg="dark" data-bs-theme="dark">
         //     <Container>
@@ -36,13 +47,12 @@ const NavHeader = () => {
                             <Link className="nav-link" to='/update'>Update Product</Link>
                         </li>
                         <li className="nav-item">
-                            <Link className="nav-link" to='/logout'>Logout</Link>
-                        </li>
-                        <li className="nav-item">
                             <Link className="nav-link" to='/profile'>Profile</Link>
                         </li>
                     </ul>
-                    <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>
+                    <div>
+                        {auth ? <Link className="nav-link" to='/signup' onClick={logout}><button type="button" className="btn btn-danger me-2">Logout</button></Link> : <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>}
+                    </div>
                 </div>
             </div>
         </nav>
