@@ -1,7 +1,9 @@
 import React, { useState } from "react";
-
+import axios from 'axios';
+// import { useHistory } from 'react-router-dom'; // for older version
 import { Form, Button, Container } from 'react-bootstrap';
 import { useNavigate } from 'react-router-dom';
+
 
 const SignUp = () => {
     const [name, setname] = useState("");
@@ -10,8 +12,9 @@ const SignUp = () => {
 
     // middleware
     const navigate = useNavigate();
+    // const history = useHistory();
 
-    const collectData = () => {
+    const collectData = async (e) => {
         // try {
         //     const response = await fetch('http://localhost:5000/user/register', {
         //         method: 'POST',
@@ -28,7 +31,7 @@ const SignUp = () => {
         //     // Check if the response is successful (status code 2xx)
         //     if (response.ok) {
         //         // If successful, navigate to '/'
-        //         navigate('/products');
+        //         navigate('/');
         //     } else {
         //         // If not successful, throw an error
         //         throw new Error('Failed to register user');
@@ -38,22 +41,101 @@ const SignUp = () => {
         //     console.error('Error:', error);
         // }
 
-        console.warn(name, email, password);
-        const result = fetch('http://localhost:5000/user/register', {
-            method : 'post',
-            body : JSON.stringify({
-                name,
-                email,
-                password
-            }),
-            headers: {
-                'Content-Type' : 'application/json'
-            },
-        })
-        console.warn(result);
-        if(result) {
-            navigate('/products');
+        // console.warn(name, email, password);
+        // const result = await fetch('http://localhost:5000/user/register', {
+        //     method : 'post',
+        //     body : JSON.stringify({
+        //         name,
+        //         email,
+        //         password
+        //     }),
+        //     headers: {
+        //         'Content-Type' : 'application/json'
+        //     },
+        // })
+        // // console.warn(result);
+        // console.log(result)
+        // console.log( await JSON.stringify(result))
+        // localStorage.setItem("user", await JSON.stringify(result));
+        // navigate('/');
+
+        // console.warn(name, email, password);
+    
+        // fetch('http://localhost:5000/user/register', {
+        //     method : 'post',
+        //     body : JSON.stringify({
+        //         name,
+        //         email,
+        //         password
+        //     }),
+        //     headers: {
+        //         'Content-Type' : 'application/json'
+        //     },
+        // })
+        // .then(response => {
+        //     if (!response.ok) {
+        //         throw new Error('Network response was not ok');
+        //     }
+        //     return response.json(); // Parse the JSON data
+        // })
+        // .then(data => {
+        //     // Now `data` contains the response from the server
+        //     console.log(data); // Logging the data received from the server
+        //     // Store data in localStorage
+        //     localStorage.setItem("user", JSON.stringify(data));
+            
+        //     // Assuming navigate() is a function that navigates to a specific page
+        //     navigate('/');
+        // })
+        // .catch(error => {
+        //     console.error('There was a problem with your fetch operation:', error);
+        //     // Handle errors here
+        // });
+
+        // try {
+        //     const response = await fetch('http://localhost:5000/user/register', {
+        //         method: 'post',
+        //         body: JSON.stringify({
+        //             name,
+        //             email,
+        //             password
+        //         }),
+        //         headers: {
+        //             'Content-Type': 'application/json'
+        //         },
+        //     });
+    
+        //     if (!response.ok) {
+        //         throw new Error('Network response was not ok');
+        //     }
+    
+        //     const data = await response.json();
+        //     console.log(data);
+        //     localStorage.setItem("user", JSON.stringify(data));
+        //     navigate('/');
+        // } catch (error) {
+        //     console.error('There was a problem with your fetch operation:', error);
+        //     // Handle errors here
+        // }
+
+        e.preventDefault();
+
+        try {
+            const response = await axios.post('http://localhost:5000/user/register', {
+                name : name,
+                email : email,
+                password : password
+            });
+
+            const userData = response.data;
+
+            localStorage.setItem('userData', JSON.stringify(userData));
+
+            navigate('/');
+        } catch (error) {
+            console.error('Error registering user : ', error);
         }
+
     }
 
     return (

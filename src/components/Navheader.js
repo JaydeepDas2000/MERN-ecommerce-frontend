@@ -27,7 +27,7 @@ const NavHeader = () => {
                 <div className="collapse navbar-collapse text-center" id="navbarNav">
                     <ul className="navbar-nav me-auto mb-2 mb-lg-0">
                         <li className="nav-item">
-                            <Link className="nav-link" to='/products'>Product</Link>
+                            <Link className="nav-link" to='/'>Product</Link>
                         </li>
                         <li className="nav-item">
                             <Link className="nav-link" to='/add'>Add Product</Link>
