@@ -4,6 +4,7 @@ import { Container } from 'react-bootstrap';
 
 import NavHeader from './components/Navheader';
 import Footerbox from './components/Footerbox';
+import PrivateComponent from './components/PrivateComponent';
 
 import SignUp from './components/Signup';
 
@@ -14,11 +15,15 @@ function App() {
         <NavHeader/>
         <Container fluid>
           <Routes>
-            <Route path="/" element={<h1>Product List</h1>}></Route>
-            <Route path="/add" element={<h1>Product Add</h1>}></Route>
-            <Route path="/update" element={<h1>Product Update</h1>}></Route>
-            <Route path="/logout" element={<h1>Logout</h1>}></Route>
-            <Route path="/profile" element={<h1>Profile</h1>}></Route>
+
+            <Route element={<PrivateComponent/>}>
+              <Route path="/" element={<h1>Product List</h1>}></Route>
+              <Route path="/add" element={<h1>Product Add</h1>}></Route>
+              <Route path="/update" element={<h1>Product Update</h1>}></Route>
+              {/* <Route path="/logout" element={<h1>Logout</h1>}></Route> */}
+              <Route path="/profile" element={<h1>Profile</h1>}></Route>
+            </Route>
+
             <Route path="/signup" element={<SignUp/>}></Route>
           </Routes>
         </Container>
