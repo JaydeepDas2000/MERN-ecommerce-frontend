@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import axios from 'axios';
 // import { useHistory } from 'react-router-dom'; // for older version
 import { Form, Button, Container } from 'react-bootstrap';
-import { useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 
 
 const SignUp = () => {
@@ -61,9 +61,14 @@ const SignUp = () => {
                         <Form.Label>Password</Form.Label>
                         <Form.Control type="password" value={password} onChange={(e) => setpassword(e.target.value)} placeholder="Enter password" />
                     </Form.Group>
-                    <Button variant="primary" type="submit" onClick={collectData}>
-                        Submit
+                    <Button variant="primary" type="submit" className="btn-action" onClick={collectData}>
+                        Signup
                     </Button>
+                    <Link to='/login'>
+                        <Button variant="link" type="submit" className="btn-action">
+                            Already Have an Account
+                        </Button>
+                    </Link>
                 </Form>
             </div>
         </Container>
