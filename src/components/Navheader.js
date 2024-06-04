@@ -51,7 +51,15 @@ const NavHeader = () => {
                         </li>
                     </ul>
                     <div>
-                        {auth ? <Link className="nav-link" to='/signup' onClick={logout}><button type="button" className="btn btn-danger me-2">Logout</button></Link> : <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>}
+                        {
+                            auth ?
+                                <Link className="nav-link" to='/signup' onClick={logout}><button type="button" className="btn btn-danger me-2">Logout</button></Link>
+                            : 
+                                <div>
+                                    <Link to='/login'><button type="button" className="btn btn-warning me-2">Login</button></Link>
+                                    <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>
+                                </div>
+                        }
                     </div>
                 </div>
             </div>

@@ -7,6 +7,7 @@ import Footerbox from './components/Footerbox';
 import PrivateComponent from './components/PrivateComponent';
 
 import SignUp from './components/Signup';
+import Login from './components/Login';
 
 function App() {
   return (
@@ -25,6 +26,7 @@ function App() {
             </Route>
 
             <Route path="/signup" element={<SignUp/>}></Route>
+            <Route path="/login" element={<Login/>}></Route>
           </Routes>
         </Container>
         <Footerbox/>
