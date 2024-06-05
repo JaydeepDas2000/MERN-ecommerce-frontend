@@ -35,32 +35,40 @@ const NavHeader = () => {
                 <button className="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
                     <span className="navbar-toggler-icon"></span>
                 </button>
-                <div className="collapse navbar-collapse text-center" id="navbarNav">
-                    <ul className="navbar-nav me-auto mb-2 mb-lg-0">
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/'>Product</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/add'>Add Product</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/update'>Update Product</Link>
-                        </li>
-                        <li className="nav-item">
-                            <Link className="nav-link" to='/profile'>Profile</Link>
-                        </li>
-                    </ul>
-                    <div>
-                        {
-                            auth ?
-                                <Link className="nav-link" to='/signup' onClick={logout}><button type="button" className="btn btn-danger me-2">Logout</button></Link>
-                            : 
-                                <div>
-                                    <Link to='/login'><button type="button" className="btn btn-warning me-2">Login</button></Link>
-                                    <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>
-                                </div>
-                        }
-                    </div>
+                <div className="collapse navbar-collapse me-auto text-center" id="navbarNav">
+                    {
+                        auth ? 
+                        <div>
+                            <ul className="navbar-nav mb-2 mb-lg-0">
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/'>Product</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/add'>Add Product</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/update'>Update Product</Link>
+                                </li>
+                                <li className="nav-item">
+                                    <Link className="nav-link" to='/profile'>Profile</Link>
+                                </li>
+                            </ul>
+                        </div>
+                        :
+                        <></>
+                    }
+                    
+                </div>
+                <div>
+                    {
+                        auth ?
+                            <Link className="nav-link" to='/signup' onClick={logout}><button type="button" className="btn btn-danger me-2">Logout ( <span className='user-name-nav'>{JSON.parse(auth).name} )</span></button></Link>
+                        : 
+                            <div>
+                                <Link to='/login'><button type="button" className="btn btn-warning me-2">Login</button></Link>
+                                <Link to='/signup'><button type="button" className="btn btn-warning me-2">Create new user</button></Link>
+                            </div>
+                    }
                 </div>
             </div>
         </nav>
