@@ -43,6 +43,17 @@ footer.footerbox {
   font-weight: 600;
 }
 
+.form-div{
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.form-child-div{
+  padding: 10px 20px;
+  flex-grow: 1;
+  min-width: 300px;
+}
+
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -62,6 +73,16 @@ footer.footerbox {
 
 .App-link {
   color: #61dafb;
+}
+
+.btn-div{
+  width: 100%;
+  text-align: center !important;
+  margin: 20px;
+}
+
+.btn-style {
+  padding: 10px 50px;
 }
 
 @keyframes App-logo-spin {
